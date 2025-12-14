@@ -110,11 +110,7 @@
     init = {
       defaultBranch = "master";
     };
-    user = {
-      email = "tylercraig9332@gmail.com";
-      name = "Tyler Craig";
-    };
-  };  
+  };
 # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
