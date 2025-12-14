@@ -3,6 +3,14 @@
 {
   imports = [
     ./modules/sh/default.nix
+    ./modules/cli/git.nix
+    ./modules/cli/bat.nix
+    ./modules/cli/fastfetch.nix
+    ./modules/cli/btop.nix
+    ./modules/editors/zed.nix
+    #./modules/editors/nixvim.nix
+    ./modules/terminals/ghostty.nix
+    ./modules/browsers/zen.nix
   ];
   home.username = "tc";
   home.homeDirectory = "/home/tc";
@@ -18,11 +26,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
+  home.packages = with pkgs; [
+    curl
+    wget
+    neovim
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
