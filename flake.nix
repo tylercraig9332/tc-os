@@ -14,7 +14,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nix-flatpak, zen-browser, ... }:
-		let 
+		let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -22,11 +22,14 @@
 		nixosConfigurations = {
 			tc-os = lib.nixosSystem {
         inherit system;
-        modules = [ 
-          ./configuration.nix 
+        modules = [
+          ./configuration.nix
           nix-flatpak.nixosModules.nix-flatpak
         ];
-			};			
+        specialArgs = {
+          inherit inputs;
+        };
+			};
     };
     homeConfigurations = {
       tc = home-manager.lib.homeManagerConfiguration {
@@ -35,7 +38,7 @@
           inherit inputs;
         };
         modules = [ ./home.nix ];
-      };  
+      };
     };
 	};
 }
